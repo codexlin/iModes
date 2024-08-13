@@ -1,0 +1,21 @@
+version: "3.4"
+
+services:
+  whisper-webservice:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - MODEL=large
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./app:/app/app
+      - cache-pip:/root/.cache/pip
+      - cache-poetry:/root/.cache/poetry
+      - cache-whisper:/root/.cache/whisper
+
+volumes:
+  cache-pip:
+  cache-poetry:
+  cache-whisper:
